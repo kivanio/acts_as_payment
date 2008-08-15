@@ -1,0 +1,3 @@
+module ActsAsPaymentHelper
+
+end
