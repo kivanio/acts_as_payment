@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/kivanio/acts_as_payment"
   s.description = "acts_as_payment is a rails plugin that enables you to work with bills."
   s.has_rdoc = true
-  s.authors = ["Kivanio Pereira Barbosa","Claudio Luiz Pozzebon"]
+  s.authors = ["Kivanio Barbosa","Claudio Pozzebon"]
   s.add_dependency("rghost", [">= 0.8.3"])
   s.add_dependency("rghost_barcode", [">= 0.8"])
 end
