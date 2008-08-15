@@ -1,4 +1,5 @@
 class BancoBrasil < Boleto
+  
   def initialize
     super
     self.carteira = 18

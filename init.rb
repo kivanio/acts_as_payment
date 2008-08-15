@@ -13,7 +13,6 @@ require 'boleto/boleto'
 require 'boleto/bancobrasil'
 
 # Setando opções iniciais do rghost
-# include RGhost
 RGhost::Config::GS[:path] = '/opt/local/bin/gs'
 
 ActionView::Base.send(:include, ActsAsPaymentHelper)
