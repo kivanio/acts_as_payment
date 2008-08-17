@@ -15,6 +15,5 @@ File.join("#{RAILS_ROOT}/app/views"),
 )
 
 puts "Terminado."
-end
 
 puts IO.read(File.join(File.dirname(__FILE__), 'README'))

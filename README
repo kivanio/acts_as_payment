@@ -1,17 +1,28 @@
 ActsAsPayment
-=============
 
-Introduction goes here.
+======================================================================
+INSTALAÇÃO:
+======================================================================
+
+script/plugin install git://github.com/kivanio/acts_as_payment.git
+
+rake acts_as_payment:install
+
+======================================================================
+REFERÊNCIAS E INICIATIVAS:
+======================================================================
+
+http://www.boletophp.com.br/
+http://simplesideias.com.br/gerando-boletos-com-rails/
+http://carlosantoniodasilva.wordpress.com/2008/07/29/rails-bancos-e-boletos-nosso-primeiro-boleto/
+
+======================================================================
+EXEMPLO
+======================================================================
 
 
-include RGhost
-
-Example
-=======
-
-Example goes here.
 
 Gostou?
 Recomende-me: http://www.workingwithrails.com/recommendation/new/person/5679-kivanio-pereira-barbosa
-
+<a href="http://www.workingwithrails.com/recommendation/new/person/5679-kivanio-pereira-barbosa"><img alt="Recommend Me" src="http://workingwithrails.com/images/tools/compact-med-button.jpg" /></a>
 Copyright (c) 2008 [Kivanio Barbosa], released under the MIT license
