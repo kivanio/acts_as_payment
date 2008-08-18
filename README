@@ -1,12 +1,36 @@
 ActsAsPayment
 
 ======================================================================
+DEPENDÊNCIAS:
+======================================================================
+rghost >= 0.8.3
+rghost_barcode >= 0.8
+
+Ghostscript instalado e funcionando(Necessário para o rghost)
+
+
+======================================================================
 INSTALAÇÃO:
 ======================================================================
 
+Instalando plugin:
 script/plugin install git://github.com/kivanio/acts_as_payment.git
 
+Copiando arquivos:
 rake acts_as_payment:install
+
+Configurando Ghostscript no rghost:
+
+MAC OS:
+RGhost::Config::GS[:path] = '/opt/local/bin/gs'
+Win:
+Alguém?
+
+Linux:
+Alguém?
+
+FreeBSD:
+RGhost::Config::GS[:path] = '/usr/local/bin/gs'
 
 ======================================================================
 REFERÊNCIAS E INICIATIVAS:
@@ -19,10 +43,21 @@ http://carlosantoniodasilva.wordpress.com/2008/07/29/rails-bancos-e-boletos-noss
 ======================================================================
 EXEMPLO
 ======================================================================
+Ver em "arquivos/exemplo" um controller funcional
 
+
+======================================================================
+AGRADECIMENTOS
+======================================================================
+
+Ao mestre Shairon Toledo (http://www.hashcode.eti.br/) pelo seu grande conjunto rghost e rghost_barcode e dicas.
+
+Ao Nando Vieira (http://simplesideias.com.br/) por ter cedido seu modulo/class 'currency' usado neste projeto.
+
+Ao meu grande parceiro Claudio Pozzebon (http://www.kraudio.com.br) pelos ajustes no layout html e criação do EPS do Banco do Brasil.
 
 
 Gostou?
 Recomende-me: http://www.workingwithrails.com/recommendation/new/person/5679-kivanio-pereira-barbosa
 <a href="http://www.workingwithrails.com/recommendation/new/person/5679-kivanio-pereira-barbosa"><img alt="Recommend Me" src="http://workingwithrails.com/images/tools/compact-med-button.jpg" /></a>
-Copyright (c) 2008 [Kivanio Barbosa], released under the MIT license
+Copyright (c) 2008 [Kivanio Barbosa] http://www.eiq.com.br , released under the MIT license
