@@ -21,6 +21,8 @@ rake acts_as_payment:install
 
 Configurando Ghostscript no rghost:
 
+Edite o arquivo init.rb presente neste plugin, ou copie e cole no seu environment.rb
+
 MAC OS:
 RGhost::Config::GS[:path] = '/opt/local/bin/gs'
 Win:
