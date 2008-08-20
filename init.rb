@@ -1,6 +1,8 @@
 # requerendo libs necessárias
+require "rubygems"
 require 'rghost'
 require 'rghost_barcode'
+
 
 # requerendo plugin
 require 'acts_as_payment_helper'
@@ -12,7 +14,12 @@ require 'currency'
 require 'boleto/boleto'
 require 'boleto/bancobrasil'
 
-# Setando opções iniciais do rghost
-RGhost::Config::GS[:path] = '/opt/local/bin/gs'
+# Verificação da Plataforma e setando as configurações do RGHOST
+case RUBY_PLATFORM
+  when /darwin/
+   RGhost::Config::GS[:path] = '/opt/local/bin/gs'
+  when /linux/
+   RGhost::Config::GS[:path] = '/usr/bin/gs'
+end
 
 ActionView::Base.send(:include, ActsAsPaymentHelper)
