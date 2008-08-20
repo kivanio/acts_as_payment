@@ -60,13 +60,13 @@ Ver em "arquivos/exemplo" um controller funcional
 AGRADECIMENTOS
 ======================================================================
 
-Ao mestre Shairon Toledo (http://www.hashcode.eti.br/) pelo seu grande conjunto rghost e rghost_barcode e dicas.
+Ao mestre Shairon Toledo (http://www.hashcode.eti.br) pelo seu grande conjunto rghost e rghost_barcode e dicas.
 
-Ao Nando Vieira (http://simplesideias.com.br/) por ter cedido seu modulo/class 'currency' usado neste projeto.
+Ao Nando Vieira (http://simplesideias.com.br) por ter cedido seu modulo/class 'currency' usado neste projeto.
 
 Ao meu grande parceiro Claudio Pozzebon (http://www.kraudio.com.br) pelos ajustes no layout html e criação do EPS do Banco do Brasil.
 
-Ao Thiago Pradi pelo belo trabalho no init.rb permitindo que o rghost seja carregado automáticamente de acordo com a plataforma.
+Ao Thiago Pradi(http://tchandy.wordpress.com) pelo belo trabalho no init.rb permitindo que o rghost seja carregado automáticamente de acordo com a plataforma.
 
 Gostou?
 Recomende-me: http://www.workingwithrails.com/recommendation/new/person/5679-kivanio-pereira-barbosa
