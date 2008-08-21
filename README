@@ -8,7 +8,6 @@ rghost_barcode >= 0.8
 
 Ghostscript instalado e funcionando(Necessário para o rghost)
 
-
 ======================================================================
 INSTALAÇÃO:
 ======================================================================
@@ -25,6 +24,7 @@ Edite o arquivo init.rb presente neste plugin para acrescentar novas plataformas
 
 MAC OS:
 RGhost::Config::GS[:path] = '/opt/local/bin/gs'
+
 Win:
 Alguém?
 

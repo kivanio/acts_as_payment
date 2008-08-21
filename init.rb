@@ -23,5 +23,3 @@ when /linux/
 when /freebsd/
   RGhost::Config::GS[:path] = '/usr/local/bin/gs'
 end
-
-ActionView::Base.send(:include, ActsAsPaymentHelper)
