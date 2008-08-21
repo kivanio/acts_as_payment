@@ -5,7 +5,6 @@ require 'rghost_barcode'
 
 
 # requerendo plugin
-require 'acts_as_payment_helper'
 require 'core_ext_payment'
 require 'currency'
 
