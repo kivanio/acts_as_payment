@@ -102,35 +102,35 @@ class CoreExtPaymentTest < Test::Unit::TestCase
     assert_equal 3774, (Date.parse "2008-02-06").fator_vencimento
   end
 
-def test_should_clean_value
-  assert_equal "123403", 1234.03.limpa_valor_moeda
-  assert_equal "123403", +1234.03.limpa_valor_moeda
-  assert_equal "123403", -1234.03.limpa_valor_moeda
-  assert_equal 123403, 123403.limpa_valor_moeda
-  assert_equal -123403, -123403.limpa_valor_moeda
-  assert_equal 123403, +123403.limpa_valor_moeda
-  assert_equal "123403", "1234.03".limpa_valor_moeda
-  assert_equal "123403", "1234,03".limpa_valor_moeda
-  assert_equal "123403", "1,234.03".limpa_valor_moeda
-  assert_equal "123403", "1.234.03".limpa_valor_moeda
-  assert_equal "123403", "1,234,03".limpa_valor_moeda
-  assert_equal "1234003", "12.340,03".limpa_valor_moeda
-  assert_equal "123403", "+1234.03".limpa_valor_moeda
-  assert_equal "123403", "+1234,03".limpa_valor_moeda
-  assert_equal "123403", "+1,234.03".limpa_valor_moeda
-  assert_equal "123403", "+1.234.03".limpa_valor_moeda
-  assert_equal "123403", "+1,234,03".limpa_valor_moeda
-  assert_equal "1234003", "+12.340,03".limpa_valor_moeda
-  assert_equal "123403", "-1234.03".limpa_valor_moeda
-  assert_equal "123403", "-1234,03".limpa_valor_moeda
-  assert_equal "123403", "-1,234.03".limpa_valor_moeda
-  assert_equal "123403", "-1.234.03".limpa_valor_moeda
-  assert_equal "123403", "-1,234,03".limpa_valor_moeda
-  assert_equal "1234003", "-12.340,03".limpa_valor_moeda
-  assert_equal "1234ab", "1234ab".limpa_valor_moeda
-  assert_equal "ab1213", "ab1213".limpa_valor_moeda
-  assert_equal "ffab", "ffab".limpa_valor_moeda
-  assert_equal "1234", "1234".limpa_valor_moeda
-end
+  def test_should_clean_value
+    assert_equal "123403", 1234.03.limpa_valor_moeda
+    assert_equal "123403", +1234.03.limpa_valor_moeda
+    assert_equal "123403", -1234.03.limpa_valor_moeda
+    assert_equal 123403, 123403.limpa_valor_moeda
+    assert_equal -123403, -123403.limpa_valor_moeda
+    assert_equal 123403, +123403.limpa_valor_moeda
+    assert_equal "123403", "1234.03".limpa_valor_moeda
+    assert_equal "123403", "1234,03".limpa_valor_moeda
+    assert_equal "123403", "1,234.03".limpa_valor_moeda
+    assert_equal "123403", "1.234.03".limpa_valor_moeda
+    assert_equal "123403", "1,234,03".limpa_valor_moeda
+    assert_equal "1234003", "12.340,03".limpa_valor_moeda
+    assert_equal "123403", "+1234.03".limpa_valor_moeda
+    assert_equal "123403", "+1234,03".limpa_valor_moeda
+    assert_equal "123403", "+1,234.03".limpa_valor_moeda
+    assert_equal "123403", "+1.234.03".limpa_valor_moeda
+    assert_equal "123403", "+1,234,03".limpa_valor_moeda
+    assert_equal "1234003", "+12.340,03".limpa_valor_moeda
+    assert_equal "123403", "-1234.03".limpa_valor_moeda
+    assert_equal "123403", "-1234,03".limpa_valor_moeda
+    assert_equal "123403", "-1,234.03".limpa_valor_moeda
+    assert_equal "123403", "-1.234.03".limpa_valor_moeda
+    assert_equal "123403", "-1,234,03".limpa_valor_moeda
+    assert_equal "1234003", "-12.340,03".limpa_valor_moeda
+    assert_equal "1234ab", "1234ab".limpa_valor_moeda
+    assert_equal "ab1213", "ab1213".limpa_valor_moeda
+    assert_equal "ffab", "ffab".limpa_valor_moeda
+    assert_equal "1234", "1234".limpa_valor_moeda
+  end
 
 end

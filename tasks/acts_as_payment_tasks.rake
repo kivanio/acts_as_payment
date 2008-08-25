@@ -8,14 +8,14 @@ namespace :acts_as_payment do
     File.join("#{RAILS_ROOT}/public"),
     :verbose => true
     )
-    
+
     #copiando os layouts dos boleto em html
     FileUtils.cp_r( 
     Dir[File.join(plugin_dir, 'arquivos/views/*')], 
     File.join("#{RAILS_ROOT}/app/views"),
     :verbose => true
     )
-    
+
     puts "Terminado."
   end
 end

@@ -1,5 +1,5 @@
 class BancoBrasil < Boleto
-  
+
   def initialize
     super
     self.carteira = 18
@@ -67,13 +67,13 @@ class BancoBrasil < Boleto
     #retorna digito para o bb
     return [0].include?(valor) ? "X" : valor
   end
-  
+
   def codigo_barra_imagem
     doc=Document.new :paper => [16,2], :margin => [1, 1, 1, 1]
     doc.barcode_interleaved2of5(self.codigo_barras, :height => 2)
     doc.render :jpeg, :filename => 'public/images/payment/codigobb.jpg', :size => '10x20'
   end
-  
+
   # Gerar o boleto em pdf usando template padrão
   def boleto_pdf
     doc=Document.new :paper => :A4 # 210x297
@@ -82,7 +82,7 @@ class BancoBrasil < Boleto
     doc.define_tags do
       tag :grande, :size => 12
     end
-    
+
     #INICIO Primeira parte do BOLETO BB
     doc.moveto :x => '6.8 cm' , :y => '28 cm'
     doc.show "#{self.banco}-#{self.banco_dv}", :tag => :grande
@@ -135,7 +135,7 @@ class BancoBrasil < Boleto
     doc.moveto :x => '1.2 cm' , :y => '21.5 cm'
     doc.show "#{self.sacado_linha2} - #{self.sacado_linha3}"
     #FIM Primeira parte do BOLETO BB
-    
+
     #INICIO Segunda parte do BOLETO BB
     doc.moveto :x => '6.8 cm' , :y => '18.4 cm'
     doc.show "#{self.banco}-#{self.banco_dv}", :tag => :grande
@@ -188,7 +188,7 @@ class BancoBrasil < Boleto
     doc.moveto :x => '1.2 cm' , :y => '11.9 cm'
     doc.show "#{self.sacado_linha2} - #{self.sacado_linha3}"
     #FIM Segunda parte do BOLETO BB
-    
+
     #INICIO Terceira parte do BOLETO BB
     doc.moveto :x => '6.8 cm' , :y => '9 cm'
     doc.show "#{self.banco}-#{self.banco_dv}", :tag => :grande
@@ -243,10 +243,10 @@ class BancoBrasil < Boleto
     doc.moveto :x => '1.2 cm' , :y => '2.5 cm'
     doc.show "#{self.sacado_linha2} - #{self.sacado_linha3}"
     #FIM Terceira parte do BOLETO BB
-    
+
     #Gerando codigo de barra
     doc.barcode_interleaved2of5(self.codigo_barras, :width => '12 cm', :height => '1.5 cm', :x => '0.5 cm', :y => '0.6 cm' )
-    
+
     #Gerando PDF
     doc.render_stream(:pdf)
 

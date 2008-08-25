@@ -134,7 +134,7 @@ end
 
 class Float
   include ValidaModule
-  
+
   def limpa_valor_moeda
     (self.to_s + ("0" * (2 - self.to_s.split(/\./).last.size ))).limpa_valor_moeda
   end

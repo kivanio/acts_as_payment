@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + '/../lib/currency.rb'
 
 class CurrencyTest < Test::Unit::TestCase
   # Teste do modulo currency
-  
+
   # Testa se é numero Ex. 1321 ou 13.32
   def test_should_return_true_is_numeric
     assert_equal true, "1234".numeric?
@@ -32,7 +32,7 @@ class CurrencyTest < Test::Unit::TestCase
     assert_equal false, "ab1213".numeric?
     assert_equal false, "ffab".numeric?
   end
-  
+
   def test_should_return_correct_number
     assert_equal 1234, "1234".to_number
     assert_equal 123.4, "123.4".to_number

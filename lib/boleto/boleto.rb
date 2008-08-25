@@ -1,7 +1,7 @@
 class Boleto
   #necessario para gerar codigo de barras
   include RGhost
-  
+
   attr_accessor :banco
   attr_accessor :banco_dv
   attr_accessor :convenio

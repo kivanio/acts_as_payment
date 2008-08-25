@@ -5,18 +5,18 @@ module Currency
   BRL = {:delimiter => ".", :separator => ",", :unit => "R$", :precision => 2, :position => "before"}
   USD = {:delimiter => ',', :separator => ".", :unit => "US$", :precision => 2, :position => "before"}
   DEFAULT = BRL.merge(:unit => "")
- 
+
   module String
     def to_number(options={})
       return self.gsub(/,/, '.').to_f if self.numeric?
       nil
     end
- 
+
     def numeric?
       self =~ /^(\+|-)?[0-9]+((\.|,)[0-9]+)?$/ ? true : false
     end
   end
- 
+
   module Number
     def to_currency(options = {})
       number = self
@@ -27,7 +27,7 @@ module Currency
       position  = options["position"] || default["position"]
       separator = precision > 0 ? options["separator"] || default["separator"] : ""
       delimiter = options["delimiter"] || default["delimiter"]
- 
+
       begin
         parts = number.with_precision(precision).split('.')
         number = parts[0].to_i.with_delimiter(delimiter) + separator + parts[1].to_s
@@ -36,7 +36,7 @@ module Currency
         number
       end
     end
- 
+
     def with_delimiter(delimiter=",", separator=".")
       number = self
       begin
@@ -47,14 +47,14 @@ module Currency
         self
       end
     end
- 
+
     def with_precision(precision=3)
       number = self
       "%01.#{precision}f" % number
     end
   end
 end
- 
+
 class Fixnum; include Currency::Number; end
 class Bignum; include Currency::Number; end
 class Float; include Currency::Number; end
