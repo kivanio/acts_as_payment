@@ -37,7 +37,7 @@ class BancoBrasil < Boleto
   # Carteira 18
   def codigo_barra_bb_carteira_18
     banco = self.banco.zeros_esquerda(3)
-    valor_documento = self.valor_documento.limpa_valor.zeros_esquerda(10)
+    valor_documento = self.valor_documento.limpa_valor_moeda.zeros_esquerda(10)
     nosso_numero = self.nosso_numero.zeros_esquerda(10)
     convenio = self.convenio.to_s
     fator = self.data_vencimento.fator_vencimento

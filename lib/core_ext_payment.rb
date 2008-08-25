@@ -3,6 +3,7 @@
 ##
 
 module FormatModule
+
   def to_br_cpf
     self.to_s.gsub(/^(.{3})(.{3})(.{3})(.{2})$/,'\1.\2.\3-\4')
   end
@@ -21,22 +22,42 @@ module FormatModule
 
   def formata_documento
     case self.to_s.size
-      when 8 then self.to_br_cep
-      when 11 then self.to_br_cpf
-      when 14 then self.to_br_cnpj
-      when 9 then self.to_br_ie
+    when 8 then self.to_br_cep
+    when 11 then self.to_br_cpf
+    when 14 then self.to_br_cnpj
+    when 9 then self.to_br_ie
     end     
   end
-  def limpa_valor
-    self.to_s.gsub(/\./,'')
+
+  def limpa_valor_moeda
+    return self unless self.moeda?
+    return self.to_s.gsub(/\./,'').gsub(/,/,'').gsub(/\+/,'').gsub(/\-/,'')
   end
+
+end
+
+module ValidaModule
+
+  # Verifica se o valor é moeda
+  # Ex. +1.232.33
+  # Ex. -1.232.33
+  # Ex. +1,232.33
+  # Ex. -1,232.33
+  # Ex. +1.232,33
+  # Ex. -1.232,33
+  # Ex. +1,232,33
+  # Ex. -1,232,33
+  def moeda?
+    self.to_s =~ /^(\+|-)?\d+((\.|,)\d{3}*)*((\.|,)\d{2}*)$/ ? true : false
+  end
+
 end
 
 ##
 ## Módulo de Calculos Numéricos
 ##
 module CalculoModule
-# metodo generico para calculo de modulo 10
+  # metodo generico para calculo de modulo 10
   def modulo10
     valorinicial = self.to_s
     total = 0
@@ -102,16 +123,20 @@ end
 class String
   include FormatModule
   include CalculoModule
+  include ValidaModule
 end
 
 class Integer
   include FormatModule
   include CalculoModule
+  include ValidaModule
 end
 
 class Float
-  def limpa_valor
-    self.to_s.limpa_valor + "0"
+  include ValidaModule
+  
+  def limpa_valor_moeda
+    (self.to_s + ("0" * (2 - self.to_s.split(/\./).last.size ))).limpa_valor_moeda
   end
 end
 
@@ -121,7 +146,7 @@ class Date
     data_base = Date.parse "1997-10-07"
     return (self - data_base).to_i
   end
-  
+
   def to_s_br
     self.strftime('%d/%m/%Y')
   end
