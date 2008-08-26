@@ -45,7 +45,7 @@ class BancoBrasil < Boleto
     return valor == 10 ? "X" : valor
   end
 
-  def codigo_barra_imagem
+  def boleto_html
     doc=Document.new :paper => [16,2], :margin => [1, 1, 1, 1]
     doc.barcode_interleaved2of5(self.codigo_barras, :height => 2)
     doc.render :jpeg, :filename => 'public/images/payment/codigobb.jpg', :size => '10x20'

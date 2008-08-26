@@ -34,16 +34,10 @@ class TesteController < ApplicationController
     @boleto.sacado_linha2 = "Av. Rubéns de Mendonça, 157"
     @boleto.sacado_linha3 = "78008-000 - Cuiabá/MT "
 
-    # Gerando numero de codigo de barras
-    @boleto.codigo_barras = @boleto.codigo_barra_bb_carteira_18
-    
-    # Gerando numero de linha digitavel
-    @boleto.linha_digitavel =  @boleto.monta_linha_digitalvel
-
     # Gerando imagem de codigo de barra
     # OBS: para esta opção comentar a geração de PDF, só é possível utilizar um ou outro.
     # OBS: não esqueça de criar uma view em branco com o nome da action que você criou.
-    # @boleto.codigo_barra_imagem
+    # @boleto.boleto_html
     
     # Gerando pdf com codigo de barras a partir do template do Banco do Brasil
     send_data @boleto.boleto_pdf, :filename => "boletobb.pdf"

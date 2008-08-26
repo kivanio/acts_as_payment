@@ -46,7 +46,7 @@ class Boleto
     self.especie_documento = 'DM'
     self.especie = 'R$'
     self.moeda = "9"
-    self.data_processamento = Date.today
+    self.data_processamento = ""
     self.data_documento = self.data_processamento
     self.dias_vencimento = 0
     self.data_vencimento = self.data_processamento
