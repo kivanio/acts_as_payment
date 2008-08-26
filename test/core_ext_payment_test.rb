@@ -32,28 +32,6 @@ class CoreExtPaymentTest < Test::Unit::TestCase
     assert_equal "99.999.999-9", "999999999".to_br_ie
   end
 
-  def test_should_calculate_correct_module10
-    assert_equal 7, "0987654321".modulo10
-    assert_equal 7, 987654321.modulo10
-  end
-
-  def test_should_calculate_correct_module11
-    assert_equal 6, "0987654321".modulo11
-    assert_equal 6, 987654321.modulo11
-  end
-
-  def test_should_calculate_correct_addiction_of_numbers
-    assert_equal 3, 111.soma_digitos
-    assert_equal 8, 8.soma_digitos
-    assert_equal 3, "111".soma_digitos
-    assert_equal 8, "8".soma_digitos
-  end
-
-  def test_should_fill_correctly_with_zeros
-    assert_equal "00123", 123.zeros_esquerda(5)
-    assert_equal "00123", "123".zeros_esquerda(5)
-  end
-
   def test_should_return_correct_object_formated
     assert_equal "99.999.999-9", 999999999.formata_documento
     assert_equal "99.999.999-9", "999999999".formata_documento
@@ -66,12 +44,12 @@ class CoreExtPaymentTest < Test::Unit::TestCase
   end
 
   def test_should_return_true_is_moeda
-    assert_equal true, 1234.03.moeda?
-    assert_equal true, +1234.03.moeda?
-    assert_equal true, -1234.03.moeda?
-    assert_equal false, 123403.moeda?
-    assert_equal false, -123403.moeda?
-    assert_equal false, +123403.moeda?
+    assert_equal true, 1234.03.to_s.moeda?
+    assert_equal true, +1234.03.to_s.moeda?
+    assert_equal true, -1234.03.to_s.moeda?
+    assert_equal false, 123403.to_s.moeda?
+    assert_equal false, -123403.to_s.moeda?
+    assert_equal false, +123403.to_s.moeda?
     assert_equal true, "1234.03".moeda?
     assert_equal true, "1234,03".moeda?
     assert_equal true, "1,234.03".moeda?

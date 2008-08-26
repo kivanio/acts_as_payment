@@ -55,7 +55,7 @@
 		<tr>
 			<td width=150><IMG SRC="/images/payment/logobb.jpg"></td>
 			<td width=50>
-        <div class="field_cod_banco"><%=h @boleto.banco %>-<%=h @boleto.banco_dv %></div>
+        <div class="field_cod_banco"><%=h @boleto.banco %>-<%=h @boleto.moeda %></div>
 			</td>
 			<td class="linha_digitavel"><%=h @boleto.linha_digitavel %></td>
 		</tr>
@@ -148,7 +148,7 @@
 		<tr>
 			<td width=150><IMG SRC="/images/payment/logobb.jpg"></td>
 			<td width=50>
-        <div class="field_cod_banco"><%=h @boleto.banco %>-<%=h @boleto.banco_dv %></div>
+        <div class="field_cod_banco"><%=h @boleto.banco %>-<%=h @boleto.moeda %></div>
 			</td>
 			<td class="linha_digitavel"><%= @boleto.linha_digitavel %></td>
 		</tr>

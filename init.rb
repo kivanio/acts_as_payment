@@ -1,8 +1,7 @@
 # requerendo libs necessárias
-require "rubygems"
+require 'rubygems'
 require 'rghost'
 require 'rghost_barcode'
-
 
 # requerendo plugin
 require 'core_ext_payment'

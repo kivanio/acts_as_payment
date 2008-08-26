@@ -4,68 +4,45 @@ class BancoBrasil < Boleto
     super
     self.carteira = 18
     self.banco = "001"
-    self.banco_dv = self.banco.modulo11
-  end
-
-  def monta_linha_digitalvel
-
-    campo_1_a = "#{self.codigo_barras[0..3]}"
-    campo_1_b = "#{self.codigo_barras[19..23]}"
-    dv_1 = "#{campo_1_a}#{campo_1_b}".modulo10
-    campo_1_dv = "#{campo_1_a}#{campo_1_b}#{dv_1}"
-    campo_linha_1 = "#{campo_1_dv[0..4]}.#{campo_1_dv[5..9]}"
-
-    campo_2 = "#{self.codigo_barras[24..33]}"
-    dv_2 = campo_2.modulo10
-    campo_2_dv = "#{campo_2}#{dv_2}"
-    campo_linha_2 = "#{campo_2_dv[0..4]}.#{campo_2_dv[5..10]}"
-
-    campo_3 = "#{self.codigo_barras[34..43]}"
-    dv_3 = campo_3.modulo10
-    campo_3_dv = "#{campo_3}#{dv_3}"
-    campo_linha_3 = "#{campo_3_dv[0..4]}.#{campo_3_dv[5..10]}"
-
-    campo_linha_4 = "#{self.codigo_barras[4..4]}"
-
-    campo_linha_5 = "#{self.codigo_barras[5..18]}"
-
-    linha = "#{campo_linha_1} #{campo_linha_2} #{campo_linha_3} #{campo_linha_4} #{campo_linha_5}"
-
-    return linha
   end
 
   # Carteira 18
-  def codigo_barra_bb_carteira_18
-    banco = self.banco.zeros_esquerda(3)
-    valor_documento = self.valor_documento.limpa_valor_moeda.zeros_esquerda(10)
-    nosso_numero = self.nosso_numero.zeros_esquerda(10)
+  def codigo_barras
+    banco = self.zeros_esquerda(self.banco,3)
+    valor_documento = self.zeros_esquerda((self.valor_documento.limpa_valor_moeda),10)
     convenio = self.convenio.to_s
     fator = self.data_vencimento.fator_vencimento
 
-    # Convenio 7 digitos e nosso numero 10 digitos
-    if ((convenio.size == 7) && (nosso_numero.size == 10))
+    case convenio.size
+    # Nosso Numero de 17 digitos com Convenio de 7 digitos e complemento de 10 digitos
+    when 7 then
+      nosso_numero = self.zeros_esquerda(self.nosso_numero,10)
       numero_dv = "#{banco}#{self.moeda}#{fator}#{valor_documento}000000#{convenio}#{nosso_numero}#{self.carteira}"
-      dv_barra = "#{self.modulo11_bb_codigo_barra(numero_dv)}"
+      dv_barra = "#{self.modulo11_2to9(numero_dv)}"
       barra = "#{banco}#{self.moeda}#{dv_barra}#{fator}#{valor_documento}000000#{convenio}#{nosso_numero}#{self.carteira}"
       return barra
+    when 4
+      nosso_numero = self.zeros_esquerda(self.nosso_numero,7)
+      agencia = self.zeros_esquerda(self.agencia,4)
+      conta = self.zeros_esquerda(self.conta_corrente,8)
+      numero_dv = "#{banco}#{self.moeda}#{fator}#{valor_documento}#{convenio}#{nosso_numero}#{agencia}#{conta}#{self.carteira}"
+      dv_barra = "#{self.modulo11_2to9(numero_dv)}"
+      barra = "#{banco}#{self.moeda}#{dv_barra}#{fator}#{valor_documento}#{convenio}#{nosso_numero}#{agencia}#{conta}#{self.carteira}"
+      return barra
+    else
+      return nil
     end
 
-  end
 
-  # metodo para retorno de digito verificador de modulo 11 para codigo de barras do Banco do Brasil
-  def modulo11_bb_codigo_barra(numero)
-    #calcula modulo 11 para codigo de barras do BB
-    valor = numero.modulo11(0)
-    # retorna o digito para o BB
-    return [0,10,11].include?(valor) ? 1 : valor
   end
 
   # metodo para retorno de digito verificador de modulo 11 para linha digitavel do Banco do Brasil
-  def modulo11_bb_linha_digitavel(numero)
+  def modulo11_9to2_bb(valor_inicial="")
+    return valor_inicial if (valor_inicial !~ /\S/)
     #calcula modulo
-    valor = numero.modulo11
+    valor = self.modulo11_9to2(valor_inicial)
     #retorna digito para o bb
-    return [0].include?(valor) ? "X" : valor
+    return valor == 10 ? "X" : valor
   end
 
   def codigo_barra_imagem
@@ -85,7 +62,7 @@ class BancoBrasil < Boleto
 
     #INICIO Primeira parte do BOLETO BB
     doc.moveto :x => '6.8 cm' , :y => '28 cm'
-    doc.show "#{self.banco}-#{self.banco_dv}", :tag => :grande
+    doc.show "#{self.banco}-#{self.moeda}", :tag => :grande
     doc.moveto :x => '0.5 cm' , :y => '27.2 cm'
     doc.show self.local_pagamento
     doc.moveto :x => '17.5 cm' , :y => '27.2 cm'
@@ -138,7 +115,7 @@ class BancoBrasil < Boleto
 
     #INICIO Segunda parte do BOLETO BB
     doc.moveto :x => '6.8 cm' , :y => '18.4 cm'
-    doc.show "#{self.banco}-#{self.banco_dv}", :tag => :grande
+    doc.show "#{self.banco}-#{self.moeda}", :tag => :grande
     doc.moveto :x => '0.5 cm' , :y => '17.6 cm'
     doc.show self.local_pagamento
     doc.moveto :x => '17.5 cm' , :y => '17.6 cm'
@@ -191,7 +168,7 @@ class BancoBrasil < Boleto
 
     #INICIO Terceira parte do BOLETO BB
     doc.moveto :x => '6.8 cm' , :y => '9 cm'
-    doc.show "#{self.banco}-#{self.banco_dv}", :tag => :grande
+    doc.show "#{self.banco}-#{self.moeda}", :tag => :grande
     doc.moveto :x => '8.4 cm' , :y => '9 cm'
     doc.show self.linha_digitavel, :tag => :grande
     doc.moveto :x => '0.5 cm' , :y => '8.2 cm'
