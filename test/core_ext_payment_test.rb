@@ -79,6 +79,12 @@ class CoreExtPaymentTest < Test::Unit::TestCase
     assert_equal 3770, (Date.parse "2008-02-02").fator_vencimento
     assert_equal 3774, (Date.parse "2008-02-06").fator_vencimento
   end
+  
+  def test_should_return_correct_formated_date
+    assert_equal "01/02/2008", (Date.parse "2008-02-01").to_s_br
+    assert_equal "02/02/2008", (Date.parse "2008-02-02").to_s_br
+    assert_equal "06/02/2008", (Date.parse "2008-02-06").to_s_br
+  end
 
   def test_should_clean_value
     assert_equal "123403", 1234.03.limpa_valor_moeda

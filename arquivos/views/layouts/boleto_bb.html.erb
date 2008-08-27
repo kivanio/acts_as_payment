@@ -57,7 +57,7 @@
 			<td width=50>
         <div class="field_cod_banco"><%=h @boleto.banco %>-<%=h @boleto.moeda %></div>
 			</td>
-			<td class="linha_digitavel"><%=h @boleto.linha_digitavel %></td>
+			<td class="linha_digitavel"><%=h @boleto.linha_digitavel(@boleto.codigo_barras) %></td>
 		</tr>
 		</tbody>
 		</table>
@@ -150,7 +150,7 @@
 			<td width=50>
         <div class="field_cod_banco"><%=h @boleto.banco %>-<%=h @boleto.moeda %></div>
 			</td>
-			<td class="linha_digitavel"><%= @boleto.linha_digitavel %></td>
+			<td class="linha_digitavel"><%= @boleto.linha_digitavel(@boleto.codigo_barras) %></td>
 		</tr>
 		</tbody>
 		</table>

@@ -38,7 +38,7 @@ class BancoBrasil < Boleto
 
   # metodo para retorno de digito verificador de modulo 11 para linha digitavel do Banco do Brasil
   def modulo11_9to2_bb(valor_inicial="")
-    return valor_inicial if (valor_inicial !~ /\S/)
+    return nil if (valor_inicial !~ /\S/)
     #calcula modulo
     valor = self.modulo11_9to2(valor_inicial)
     #retorna digito para o bb
@@ -170,7 +170,7 @@ class BancoBrasil < Boleto
     doc.moveto :x => '6.8 cm' , :y => '9 cm'
     doc.show "#{self.banco}-#{self.moeda}", :tag => :grande
     doc.moveto :x => '8.4 cm' , :y => '9 cm'
-    doc.show self.linha_digitavel, :tag => :grande
+    doc.show self.linha_digitavel(self.codigo_barras), :tag => :grande
     doc.moveto :x => '0.5 cm' , :y => '8.2 cm'
     doc.show self.local_pagamento
     doc.moveto :x => '17.5 cm' , :y => '8.2 cm'
