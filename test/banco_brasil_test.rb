@@ -13,7 +13,7 @@ class BancoBrasilTest < Test::Unit::TestCase
     @boleto_novo = BancoBrasil.new
   end
 
-  def boleto_um
+  def boleto_convenio7_numero10_um
     @boleto_novo.banco = "001"
     @boleto_novo.carteira = "18"
     @boleto_novo.moeda = "9"
@@ -22,8 +22,8 @@ class BancoBrasilTest < Test::Unit::TestCase
     @boleto_novo.nosso_numero = "7777700168"
     @boleto_novo.data_vencimento = Date.parse("2008-02-01")
   end
-  
-  def boleto_dois
+
+  def boleto_convenio7_numero10_dois
     @boleto_novo.banco = "001"
     @boleto_novo.carteira = "18"
     @boleto_novo.moeda = "9"
@@ -32,7 +32,71 @@ class BancoBrasilTest < Test::Unit::TestCase
     @boleto_novo.nosso_numero = "7777700168"
     @boleto_novo.data_vencimento = Date.parse("2008-02-01")
   end
-  
+
+  def boleto_convenio6_numero5
+    @boleto_novo.banco = "001"
+    @boleto_novo.carteira = "18"
+    @boleto_novo.agencia = "4042"
+    @boleto_novo.conta_corrente = "61900"
+    @boleto_novo.moeda = "9"
+    @boleto_novo.valor_documento = 135.00
+    @boleto_novo.convenio = 123879
+    @boleto_novo.nosso_numero = "1234"
+    @boleto_novo.data_vencimento = Date.parse("2008-02-01")
+    @boleto_novo.codigo_servico = false
+  end
+
+  def boleto_convenio6_numero17_carteira16
+    @boleto_novo.banco = "001"
+    @boleto_novo.carteira = "16"
+    @boleto_novo.agencia = "4042"
+    @boleto_novo.conta_corrente = "61900"
+    @boleto_novo.moeda = "9"
+    @boleto_novo.valor_documento = 135.00
+    @boleto_novo.convenio = 123879
+    @boleto_novo.nosso_numero = "1234567899"
+    @boleto_novo.data_vencimento = Date.parse("2008-02-01")
+    @boleto_novo.codigo_servico = true
+  end
+
+  def boleto_convenio6_numero17_carteira17
+    @boleto_novo.banco = "001"
+    @boleto_novo.carteira = "17"
+    @boleto_novo.agencia = "4042"
+    @boleto_novo.conta_corrente = "61900"
+    @boleto_novo.moeda = "9"
+    @boleto_novo.valor_documento = 135.00
+    @boleto_novo.convenio = 123879
+    @boleto_novo.nosso_numero = "1234567899"
+    @boleto_novo.data_vencimento = Date.parse("2008-02-01")
+    @boleto_novo.codigo_servico = true
+  end
+
+  def boleto_convenio6_numero17_carteira18
+    @boleto_novo.banco = "001"
+    @boleto_novo.carteira = "18"
+    @boleto_novo.agencia = "4042"
+    @boleto_novo.conta_corrente = "61900"
+    @boleto_novo.moeda = "9"
+    @boleto_novo.valor_documento = 135.00
+    @boleto_novo.convenio = 123879
+    @boleto_novo.nosso_numero = "1234567899"
+    @boleto_novo.data_vencimento = Date.parse("2008-02-01")
+    @boleto_novo.codigo_servico = true
+  end
+
+  def boleto_convenio4_numero7
+    @boleto_novo.banco = "001"
+    @boleto_novo.carteira = "18"
+    @boleto_novo.agencia = "4042"
+    @boleto_novo.conta_corrente = "61900"
+    @boleto_novo.moeda = "9"
+    @boleto_novo.valor_documento = 135.00
+    @boleto_novo.convenio = 1238
+    @boleto_novo.nosso_numero = "123456"
+    @boleto_novo.data_vencimento = Date.parse("2008-02-01")
+  end
+
   def boleto_nil
     @boleto_novo.banco = ""
     @boleto_novo.carteira = ""
@@ -108,19 +172,45 @@ class BancoBrasilTest < Test::Unit::TestCase
   end
 
   def test_should_mont_correct_codigo_barras
-    boleto_um
+    boleto_convenio7_numero10_um
     assert_equal "00192376900000135000000001238798777770016818", @boleto_novo.codigo_barras
-    boleto_dois
+    boleto_convenio7_numero10_dois
     assert_equal "00194376900000723560000001238798777770016818", @boleto_novo.codigo_barras
+    boleto_convenio6_numero5
+    assert_equal "00192376900000135001238790123440420006190018", @boleto_novo.codigo_barras
+    boleto_convenio6_numero17_carteira16
+    assert_equal "00199376900000135001238790000000123456789921", @boleto_novo.codigo_barras
+    boleto_convenio6_numero17_carteira17
+    assert_raise RuntimeError do
+      raise 'Verifique as informações do boleto!!!'
+    end
+    boleto_convenio6_numero17_carteira18
+    assert_equal "00199376900000135001238790000000123456789921", @boleto_novo.codigo_barras
+    boleto_convenio4_numero7
+    assert_equal "00191376900000135001238012345640420006190018", @boleto_novo.codigo_barras
     boleto_nil
     assert_equal nil, @boleto_novo.codigo_barras
   end
 
   def test_should_mont_correct_linha_digitalvel
-    boleto_um
+    boleto_convenio7_numero10_um
     assert_equal("00190.00009 01238.798779 77700.168188 2 37690000013500", @boleto_novo.linha_digitavel(@boleto_novo.codigo_barras))
-    boleto_dois
+    boleto_convenio7_numero10_dois
     assert_equal("00190.00009 01238.798779 77700.168188 4 37690000072356", @boleto_novo.linha_digitavel(@boleto_novo.codigo_barras))
+    boleto_convenio6_numero5
+    assert_equal("00191.23876 90123.440423 00061.900189 2 37690000013500", @boleto_novo.linha_digitavel(@boleto_novo.codigo_barras))
+    boleto_convenio6_numero17_carteira16
+    assert_equal("00191.23876 90000.000126 34567.899215 9 37690000013500", @boleto_novo.linha_digitavel(@boleto_novo.codigo_barras))
+    boleto_convenio6_numero17_carteira17
+    assert_raise RuntimeError do
+      raise 'Verifique as informações do boleto!!!'
+    end
+    boleto_convenio6_numero17_carteira18
+    assert_equal("00191.23876 90000.000126 34567.899215 9 37690000013500", @boleto_novo.linha_digitavel(@boleto_novo.codigo_barras))
+    boleto_convenio6_numero5
+    assert_equal("00191.23876 90123.440423 00061.900189 2 37690000013500", @boleto_novo.linha_digitavel(@boleto_novo.codigo_barras))
+    boleto_convenio4_numero7
+    assert_equal("00191.23801 12345.640424 00061.900189 1 37690000013500", @boleto_novo.linha_digitavel(@boleto_novo.codigo_barras))
     assert_kind_of( String, @boleto_novo.linha_digitavel(@boleto_novo.codigo_barras))
     boleto_nil
     assert_equal nil, @boleto_novo.linha_digitavel(@boleto_novo.codigo_barras)

@@ -1,9 +1,12 @@
 class BancoBrasil < Boleto
 
+  attr_accessor :codigo_servico
+
   def initialize
     super
     self.carteira = "18"
     self.banco = "001"
+    self.codigo_servico = false
   end
 
   # Carteira 18
@@ -14,15 +17,36 @@ class BancoBrasil < Boleto
     fator = self.data_vencimento.fator_vencimento
 
     case convenio.size
-    # Nosso Numero de 17 digitos com Convenio de 7 digitos e complemento de 10 digitos
+      # Nosso Numero de 17 digitos com Convenio de 7 digitos e complemento de 10 digitos
     when 7 then
       nosso_numero = self.zeros_esquerda(self.nosso_numero,10)
+      raise "Seu complemento está com #{nosso_numero.size} dígitos. Com convênio de 7 dígitos, somente permite-se até 10 dígitos no complemento do nosso numero." if nosso_numero.size > 10
       numero_dv = "#{banco}#{self.moeda}#{fator}#{valor_documento}000000#{convenio}#{nosso_numero}#{self.carteira}"
       dv_barra = "#{self.modulo11_2to9(numero_dv)}"
       barra = "#{banco}#{self.moeda}#{dv_barra}#{fator}#{valor_documento}000000#{convenio}#{nosso_numero}#{self.carteira}"
       return barra
+    when 6
+      if self.codigo_servico == false 
+        nosso_numero = self.zeros_esquerda(self.nosso_numero,5)
+        raise "Seu complemento está com #{nosso_numero.size} dígitos. Com convênio de 6 dígitos, somente permite-se até 5 dígitos no complemento do nosso numero. Para emitir boletos com nosso numero de 17 dígitos, coloque o atributo codigo_servico=true" if nosso_numero.size > 5
+        agencia = self.zeros_esquerda(self.agencia,4)
+        conta = self.zeros_esquerda(self.conta_corrente,8)
+        numero_dv = "#{banco}#{self.moeda}#{fator}#{valor_documento}#{convenio}#{nosso_numero}#{agencia}#{conta}#{self.carteira}"
+        dv_barra = "#{self.modulo11_2to9(numero_dv)}"
+        barra = "#{banco}#{self.moeda}#{dv_barra}#{fator}#{valor_documento}#{convenio}#{nosso_numero}#{agencia}#{conta}#{self.carteira}"
+        return barra
+      else
+        nosso_numero = self.zeros_esquerda(self.nosso_numero,17)
+        raise "Seu complemento está com #{nosso_numero.size} dígitos. Com convênio de 6 dígitos, somente permite-se até 17 dígitos no complemento do nosso numero." if (nosso_numero.size > 17)
+        raise "Só é permitido emitir boletos com nosso número de 17 dígitos com carteiras 16 ou 18. Sua carteira atual é #{self.carteira}" unless (["16","18"].include?(self.carteira))
+        numero_dv = "#{banco}#{self.moeda}#{fator}#{valor_documento}#{convenio}#{nosso_numero}21"
+        dv_barra = "#{self.modulo11_2to9(numero_dv)}"
+        barra = "#{banco}#{self.moeda}#{dv_barra}#{fator}#{valor_documento}#{convenio}#{nosso_numero}21"
+        return barra
+      end
     when 4
       nosso_numero = self.zeros_esquerda(self.nosso_numero,7)
+      raise "Seu complemento está com #{nosso_numero.size} dígitos. Com convênio de 4 dígitos, somente permite-se até 7 dígitos no complemento do nosso numero." if nosso_numero.size > 7
       agencia = self.zeros_esquerda(self.agencia,4)
       conta = self.zeros_esquerda(self.conta_corrente,8)
       numero_dv = "#{banco}#{self.moeda}#{fator}#{valor_documento}#{convenio}#{nosso_numero}#{agencia}#{conta}#{self.carteira}"
