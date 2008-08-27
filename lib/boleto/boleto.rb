@@ -43,8 +43,8 @@ class Boleto
   attr_accessor :sacado_linha3
 
   def initialize
-    self.especie_documento = 'DM'
-    self.especie = 'R$'
+    self.especie_documento = "DM"
+    self.especie = "R$"
     self.moeda = "9"
     self.data_processamento = Date.today
     self.data_documento = self.data_processamento

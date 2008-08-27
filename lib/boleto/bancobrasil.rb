@@ -2,7 +2,7 @@ class BancoBrasil < Boleto
 
   def initialize
     super
-    self.carteira = 18
+    self.carteira = "18"
     self.banco = "001"
   end
 

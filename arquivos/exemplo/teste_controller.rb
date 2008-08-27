@@ -14,11 +14,11 @@ class TesteController < ApplicationController
     @boleto.valor = 135.00
     @boleto.valor_documento = (@boleto.quantidade * @boleto.valor)
     @boleto.aceite = "S"
-    @boleto.agencia = 4042
+    @boleto.agencia = "4042"
     @boleto.agencia_dv = @boleto.modulo11_9to2_bb(@boleto.agencia)
-    @boleto.conta_corrente = 61900
+    @boleto.conta_corrente = "61900"
     @boleto.conta_corrente_dv = @boleto.modulo11_9to2_bb(@boleto.conta_corrente)
-    @boleto.convenio = 1238798
+    @boleto.convenio = "1238798"
     @boleto.nosso_numero = "7777700168"
     @boleto.nosso_numero_dv = @boleto.modulo11_9to2_bb("#{@boleto.convenio}#{@boleto.nosso_numero}")
     @boleto.numero_documento = "102008"
