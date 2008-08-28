@@ -1,5 +1,7 @@
 # ActsAsPayment
 
+    http://www.kivanio.com.br/home/post/58-plugin-para-pagamentos-actsaspayment.html
+
 ## DEPENDÊNCIAS:
 
 * Ghostscript instalado e funcionando(Necessário para o rghost)
@@ -9,9 +11,11 @@
 ## INSTALAÇÃO:
 
 Instalando plugin:
+
     script/plugin install git://github.com/kivanio/acts_as_payment.git
 
 Copiando arquivos:
+
     rake acts_as_payment:install
 
 Configurando Ghostscript no rghost:
@@ -26,27 +30,27 @@ Edite o arquivo init.rb presente neste plugin para acrescentar novas plataformas
 ## MÉTODOS DISPONÍVEIS:
 
 * Boleto:
-  -Banco do Brasil - HTML e PDF
-   -Carteira 16
-    -Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
-    -Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
-    -Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
-    -Nosso Número de 17 dígitos(convênio de 6 dígitos, porém usa-se 17 para complemento do nosso número)
-   -Carteira 17
-    -Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
-    -Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
-    -Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
-   -Carteira 18
-    -Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
-    -Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
-    -Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
-    -Nosso Número de 17 dígitos(convênio de 6 dígitos, porém usa-se 17 para complemento do nosso número)
+  - Banco do Brasil - HTML e PDF
+   - Carteira 16
+    - Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
+    - Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
+    - Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
+    - Nosso Número de 17 dígitos(convênio de 6 dígitos, porém usa-se 17 para complemento do nosso número)
+   - Carteira 17
+    - Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
+    - Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
+    - Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
+   - Carteira 18
+    - Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
+    - Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
+    - Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
+    - Nosso Número de 17 dígitos(convênio de 6 dígitos, porém usa-se 17 para complemento do nosso número)
 
 ## REFERÊNCIAS E INICIATIVAS:
 
-http://www.boletophp.com.br/
-http://simplesideias.com.br/gerando-boletos-com-rails/
-http://carlosantoniodasilva.wordpress.com/2008/07/29/rails-bancos-e-boletos-nosso-primeiro-boleto/
+* http://www.boletophp.com.br/
+* http://simplesideias.com.br/gerando-boletos-com-rails/
+* http://carlosantoniodasilva.wordpress.com/2008/07/29/rails-bancos-e-boletos-nosso-primeiro-boleto/
 
 
 ## EXEMPLO
@@ -64,11 +68,12 @@ http://carlosantoniodasilva.wordpress.com/2008/07/29/rails-bancos-e-boletos-noss
           
 
 ## Gostou?
-Recomende-me: http://www.workingwithrails.com/recommendation/new/person/5679-kivanio-pereira-barbosa
-Cyright (c) 2008 [Kivanio Barbosa] http://www.kivanio.com.br , released under the MIT license
+Recomende-me[ak]
+Released under the MIT license
 
 
 [a]: http://www.kivanio.com.br
+[ak]: http://www.workingwithrails.com/recommendation/new/person/5679-kivanio-pereira-barbosa
 [st]: http://www.hashcode.eti.br
 [nv]: http://simplesideias.com.br
 [cp]: http://www.kraudio.com.br
