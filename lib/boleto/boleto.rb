@@ -7,6 +7,7 @@ class Boleto
   attr_accessor :contrato
   attr_accessor :moeda
   attr_accessor :carteira
+  attr_accessor :variacao
   attr_accessor :data_processamento
   attr_accessor :dias_vencimento
   attr_accessor :data_vencimento
