@@ -68,7 +68,9 @@ Edite o arquivo init.rb presente neste plugin para acrescentar novas plataformas
           
 
 ## Gostou?
+
 [Recomende-me no workingwithrails.com][ak]
+
 Released under the MIT license
 
 
