@@ -1,0 +1,75 @@
+# ActsAsPayment
+
+## DEPENDÊNCIAS:
+
+* Ghostscript instalado e funcionando(Necessário para o rghost)
+* rghost >= 0.8.3
+* rghost_barcode >= 0.8
+
+## INSTALAÇÃO:
+
+Instalando plugin:
+    script/plugin install git://github.com/kivanio/acts_as_payment.git
+
+Copiando arquivos:
+    rake acts_as_payment:install
+
+Configurando Ghostscript no rghost:
+
+Edite o arquivo init.rb presente neste plugin para acrescentar novas plataformas.
+
+    MAC OS: RGhost::Config::GS[:path] = '/opt/local/bin/gs'
+    Windows: Alguém?
+    Linux: RGhost::Config::GS[:path] = '/usr/bin/gs'
+    FreeBSD: RGhost::Config::GS[:path] = '/usr/local/bin/gs'
+
+## MÉTODOS DISPONÍVEIS:
+
+* Boleto:
+  -Banco do Brasil - HTML e PDF
+   -Carteira 16
+    -Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
+    -Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
+    -Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
+    -Nosso Número de 17 dígitos(convênio de 6 dígitos, porém usa-se 17 para complemento do nosso número)
+   -Carteira 17
+    -Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
+    -Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
+    -Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
+   -Carteira 18
+    -Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
+    -Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
+    -Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
+    -Nosso Número de 17 dígitos(convênio de 6 dígitos, porém usa-se 17 para complemento do nosso número)
+
+## REFERÊNCIAS E INICIATIVAS:
+
+http://www.boletophp.com.br/
+http://simplesideias.com.br/gerando-boletos-com-rails/
+http://carlosantoniodasilva.wordpress.com/2008/07/29/rails-bancos-e-boletos-nosso-primeiro-boleto/
+
+
+## EXEMPLO
+
+    Ver em "arquivos/exemplo" um controller funcional
+
+
+## COLABORADORES
+
+  * [Kivanio Barbosa][a](autor)
+  * [Shairon Toledo][st](rghost e rghost_barcode)
+  * [Nando Vieira][nv](modulo/class 'currency')
+  * [Claudio Pozzebon][cp](layout html e criação do EPS do Banco do Brasil)
+  * [Thiago Pradi][tp](Melhorias no init, tests e refactoring)
+          
+
+## Gostou?
+Recomende-me: http://www.workingwithrails.com/recommendation/new/person/5679-kivanio-pereira-barbosa
+Cyright (c) 2008 [Kivanio Barbosa] http://www.kivanio.com.br , released under the MIT license
+
+
+[a]: http://www.kivanio.com.br
+[st]: http://www.hashcode.eti.br
+[nv]: http://simplesideias.com.br
+[cp]: http://www.kraudio.com.br
+[tp]: http://tchandy.wordpress.com
