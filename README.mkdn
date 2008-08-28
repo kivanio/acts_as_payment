@@ -29,22 +29,22 @@ Edite o arquivo init.rb presente neste plugin para acrescentar novas plataformas
 
 ## MÉTODOS DISPONÍVEIS:
 
-* Boleto:
-  - Banco do Brasil - HTML e PDF
-   - Carteira 16
-    - Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
-    - Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
-    - Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
-    - Nosso Número de 17 dígitos(convênio de 6 dígitos, porém usa-se 17 para complemento do nosso número)
-   - Carteira 17
-    - Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
-    - Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
-    - Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
-   - Carteira 18
-    - Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
-    - Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
-    - Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
-    - Nosso Número de 17 dígitos(convênio de 6 dígitos, porém usa-se 17 para complemento do nosso número)
+*   Boleto:
+    1.  Banco do Brasil - HTML e PDF
+        * Carteira 16
+          - Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
+          - Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
+          - Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
+          - Nosso Número de 17 dígitos(convênio de 6 dígitos, porém usa-se 17 para complemento do nosso número)
+        * Carteira 17
+          - Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
+          - Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
+          - Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
+        * Carteira 18
+          - Nosso Número de 11 dígitos(4 para convênio e 7 para complemento do nosso número)
+          - Nosso Número de 11 dígitos(6 para convênio e 5 para complemento do nosso número)
+          - Nosso Número de 17 dígitos(7 para convênio e 10 para complemento do nosso número)
+          - Nosso Número de 17 dígitos(convênio de 6 dígitos, porém usa-se 17 para complemento do nosso número)
 
 ## REFERÊNCIAS E INICIATIVAS:
 
@@ -68,7 +68,7 @@ Edite o arquivo init.rb presente neste plugin para acrescentar novas plataformas
           
 
 ## Gostou?
-Recomende-me[ak]
+[Recomende-me no workingwithrails.com][ak]
 Released under the MIT license
 
 
