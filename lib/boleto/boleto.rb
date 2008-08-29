@@ -1,6 +1,8 @@
 class Boleto
-  #necessario para gerar codigo de barras
-  include RGhost
+  # necessario para gerar codigo de barras
+  include RGhost unless self.include?(RGhost)
+  # necessario para validar os campos
+  include Validatable unless self.include?(Validatable)
 
   attr_accessor :banco
   attr_accessor :convenio
@@ -14,14 +16,12 @@ class Boleto
   attr_accessor :quantidade
   attr_accessor :valor
   attr_accessor :valor_documento
-  attr_accessor :valor_documento_limpo
   attr_accessor :nosso_numero
   attr_accessor :nosso_numero_dv
   attr_accessor :agencia
   attr_accessor :agencia_dv
   attr_accessor :conta_corrente
   attr_accessor :conta_corrente_dv
-  attr_accessor :fator_vencimento
   attr_accessor :cedente
   attr_accessor :documento_cedente
   attr_accessor :numero_documento
@@ -29,6 +29,7 @@ class Boleto
   attr_accessor :especie_documento
   attr_accessor :data_documento
   attr_accessor :sacado
+  attr_accessor :documento_sacado
   attr_accessor :instrucao1
   attr_accessor :instrucao2
   attr_accessor :instrucao3
@@ -37,11 +38,28 @@ class Boleto
   attr_accessor :instrucao6
   attr_accessor :instrucao7
   attr_accessor :local_pagamento
-  attr_accessor :documento_sacado
   attr_accessor :aceite
   attr_accessor :sacado_linha1
   attr_accessor :sacado_linha2
   attr_accessor :sacado_linha3
+  
+  validates_presence_of :banco, :message => "Banco não pode estar em branco."
+  validates_presence_of :agencia, :message => "Agência não pode estar em branco."
+  validates_presence_of :conta_corrente, :message => "Conta Corrente não pode estar em branco."
+  validates_presence_of :especie_documento, :message => "Espécie de Documento não pode estar em branco."
+  validates_presence_of :especie, :message => "Espécie não pode estar em branco."
+  validates_presence_of :moeda, :message => "Moeda não pode estar em branco."
+  validates_presence_of :data_processamento, :message => "Date de Processamento não pode estar em branco."
+  validates_presence_of :dias_vencimento, :message => "Dias para o Vencimento não pode estar em branco."
+  validates_presence_of :data_vencimento, :message => "Data de Vencimento não pode estar em branco."
+  validates_presence_of :aceite, :message => "Aceite não pode estar em branco."
+  validates_presence_of :quantidade, :message => "Quantidade não pode estar em branco."
+  validates_presence_of :valor_documento, :message => "Valor do Documento não pode estar em branco."
+  validates_presence_of :cedente, :message => "Cedente não pode estar em branco."
+  validates_presence_of :documento_cedente, :message => "Documento do Cedente não pode estar em branco."
+  validates_presence_of :nosso_numero, :message => "Nosso Número não pode estar em branco."
+  validates_presence_of :sacado, :message => "Sacado não pode estar em branco."
+  validates_presence_of :documento_sacado, :message => "Documento do Sacado não pode estar em branco."
 
   def initialize
     self.especie_documento = "DM"
@@ -174,6 +192,11 @@ class Boleto
 
     return valor_inicial if (diferenca <= 0)
     return (("0" * diferenca) + valor_inicial )
+  end
+  
+  def fator_vencimento
+    return nil unless self.data_vencimento.kind_of?(Date)
+    self.data_vencimento.fator_vencimento
   end
 
 end

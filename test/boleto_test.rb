@@ -4,6 +4,7 @@ require 'test/unit'
 require 'rubygems'
 require 'rghost'
 require 'rghost_barcode'
+require 'validatable'
 
 class BoletoTest < Test::Unit::TestCase
 

@@ -2,6 +2,7 @@ $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 require 'rubygems'
 require 'rghost'
 require 'rghost_barcode'
+require 'validatable'
 require 'core_ext_payment.rb'
 require 'boleto/boleto.rb'
 require 'boleto/bancobrasil.rb'
@@ -11,6 +12,15 @@ class BancoBrasilTest < Test::Unit::TestCase
 
   def setup
     @boleto_novo = BancoBrasil.new
+    @boleto_novo.cedente = "Kivanio Barbosa"
+    @boleto_novo.documento_cedente = "12345678912"
+    @boleto_novo.sacado = "Claudio Pozzebom"
+    @boleto_novo.documento_sacado = "12345678900"
+    @boleto_novo.aceite = "S"
+    @boleto_novo.agencia = "4042"
+    @boleto_novo.agencia_dv = @boleto_novo.modulo11_9to2_bb(@boleto_novo.agencia)
+    @boleto_novo.conta_corrente = "61900"
+    @boleto_novo.conta_corrente_dv = @boleto_novo.modulo11_9to2_bb(@boleto_novo.conta_corrente)
   end
 
   def boleto_convenio7_numero10_um
@@ -20,6 +30,7 @@ class BancoBrasilTest < Test::Unit::TestCase
     @boleto_novo.valor_documento = 135.00
     @boleto_novo.convenio = 1238798
     @boleto_novo.nosso_numero = "7777700168"
+    @boleto_novo.nosso_numero_dv = @boleto_novo.modulo11_9to2_bb("#{@boleto_novo.convenio}#{@boleto_novo.nosso_numero}")  
     @boleto_novo.data_vencimento = Date.parse("2008-02-01")
   end
 
@@ -30,6 +41,7 @@ class BancoBrasilTest < Test::Unit::TestCase
     @boleto_novo.valor_documento = 723.56
     @boleto_novo.convenio = 1238798
     @boleto_novo.nosso_numero = "7777700168"
+    @boleto_novo.nosso_numero_dv = @boleto_novo.modulo11_9to2_bb("#{@boleto_novo.convenio}#{@boleto_novo.nosso_numero}")  
     @boleto_novo.data_vencimento = Date.parse("2008-02-01")
   end
 
@@ -42,6 +54,7 @@ class BancoBrasilTest < Test::Unit::TestCase
     @boleto_novo.valor_documento = 135.00
     @boleto_novo.convenio = 123879
     @boleto_novo.nosso_numero = "1234"
+    @boleto_novo.nosso_numero_dv = @boleto_novo.modulo11_9to2_bb("#{@boleto_novo.convenio}#{@boleto_novo.nosso_numero}")  
     @boleto_novo.data_vencimento = Date.parse("2008-02-01")
     @boleto_novo.codigo_servico = false
   end
@@ -55,6 +68,7 @@ class BancoBrasilTest < Test::Unit::TestCase
     @boleto_novo.valor_documento = 135.00
     @boleto_novo.convenio = 123879
     @boleto_novo.nosso_numero = "1234567899"
+    @boleto_novo.nosso_numero_dv = @boleto_novo.modulo11_9to2_bb("#{@boleto_novo.convenio}#{@boleto_novo.nosso_numero}")  
     @boleto_novo.data_vencimento = Date.parse("2008-02-01")
     @boleto_novo.codigo_servico = true
   end
@@ -68,6 +82,7 @@ class BancoBrasilTest < Test::Unit::TestCase
     @boleto_novo.valor_documento = 135.00
     @boleto_novo.convenio = 123879
     @boleto_novo.nosso_numero = "1234567899"
+    @boleto_novo.nosso_numero_dv = @boleto_novo.modulo11_9to2_bb("#{@boleto_novo.convenio}#{@boleto_novo.nosso_numero}")  
     @boleto_novo.data_vencimento = Date.parse("2008-02-01")
     @boleto_novo.codigo_servico = true
   end
@@ -81,6 +96,7 @@ class BancoBrasilTest < Test::Unit::TestCase
     @boleto_novo.valor_documento = 135.00
     @boleto_novo.convenio = 123879
     @boleto_novo.nosso_numero = "1234567899"
+    @boleto_novo.nosso_numero_dv = @boleto_novo.modulo11_9to2_bb("#{@boleto_novo.convenio}#{@boleto_novo.nosso_numero}")  
     @boleto_novo.data_vencimento = Date.parse("2008-02-01")
     @boleto_novo.codigo_servico = true
   end
@@ -94,6 +110,7 @@ class BancoBrasilTest < Test::Unit::TestCase
     @boleto_novo.valor_documento = 135.00
     @boleto_novo.convenio = 1238
     @boleto_novo.nosso_numero = "123456"
+    @boleto_novo.nosso_numero_dv = @boleto_novo.modulo11_9to2_bb("#{@boleto_novo.convenio}#{@boleto_novo.nosso_numero}")  
     @boleto_novo.data_vencimento = Date.parse("2008-02-01")
   end
 
@@ -104,6 +121,7 @@ class BancoBrasilTest < Test::Unit::TestCase
     @boleto_novo.valor_documento = 0
     @boleto_novo.convenio = ""
     @boleto_novo.nosso_numero = ""
+    @boleto_novo.nosso_numero_dv = @boleto_novo.modulo11_9to2_bb("#{@boleto_novo.convenio}#{@boleto_novo.nosso_numero}")  
     @boleto_novo.data_vencimento = Date.parse("2008-02-01")
   end
 
@@ -214,6 +232,13 @@ class BancoBrasilTest < Test::Unit::TestCase
     assert_kind_of( String, @boleto_novo.linha_digitavel(@boleto_novo.codigo_barras))
     boleto_nil
     assert_equal nil, @boleto_novo.linha_digitavel(@boleto_novo.codigo_barras)
+  end
+  
+  def test_should_boelto_valid
+    boleto_convenio7_numero10_um
+    assert_equal true, @boleto_novo.valid?
+    boleto_nil
+    assert_equal false, @boleto_novo.valid?
   end
 
 end

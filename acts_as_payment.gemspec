@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "acts_as_payment"
-  s.version = "0.0.5"
+  s.version = "0.0.6"
   s.date = "2008-08-27"
   s.summary = "An easy way to generate bills for your application"
   s.email = "kivanio@kivanio.com.br"
@@ -10,4 +10,5 @@ Gem::Specification.new do |s|
   s.authors = ["Kivanio Barbosa","Claudio Pozzebon"]
   s.add_dependency("rghost", [">= 0.8.3"])
   s.add_dependency("rghost_barcode", [">= 0.8"])
+  s.add_dependency("validatable", [">= 1.6.7"])
 end
