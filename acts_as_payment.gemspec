@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "acts_as_payment"
-  s.version = "0.0.4"
+  s.version = "0.0.5"
   s.date = "2008-08-27"
   s.summary = "An easy way to generate bills for your application"
   s.email = "kivanio@kivanio.com.br"

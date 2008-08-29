@@ -1,6 +1,6 @@
+$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
+require 'currency.rb'
 require 'test/unit'
-require File.dirname(__FILE__) + '/../lib/currency.rb'
-
 
 class CurrencyTest < Test::Unit::TestCase
   # Teste do modulo currency

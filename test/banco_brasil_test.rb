@@ -1,11 +1,11 @@
-require 'test/unit'
+$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 require 'rubygems'
 require 'rghost'
 require 'rghost_barcode'
-
-require File.dirname(__FILE__) + '/../lib/core_ext_payment.rb'
-require File.dirname(__FILE__) + '/../lib/boleto/boleto.rb'
-require File.dirname(__FILE__) + '/../lib/boleto/bancobrasil.rb'
+require 'core_ext_payment.rb'
+require 'boleto/boleto.rb'
+require 'boleto/bancobrasil.rb'
+require 'test/unit'
 
 class BancoBrasilTest < Test::Unit::TestCase
 
@@ -180,8 +180,8 @@ class BancoBrasilTest < Test::Unit::TestCase
     assert_equal "00192376900000135001238790123440420006190018", @boleto_novo.codigo_barras
     boleto_convenio6_numero17_carteira16
     assert_equal "00199376900000135001238790000000123456789921", @boleto_novo.codigo_barras
-    boleto_convenio6_numero17_carteira17
     assert_raise RuntimeError do
+      boleto_convenio6_numero17_carteira17
       raise 'Verifique as informações do boleto!!!'
     end
     boleto_convenio6_numero17_carteira18
@@ -201,8 +201,8 @@ class BancoBrasilTest < Test::Unit::TestCase
     assert_equal("00191.23876 90123.440423 00061.900189 2 37690000013500", @boleto_novo.linha_digitavel(@boleto_novo.codigo_barras))
     boleto_convenio6_numero17_carteira16
     assert_equal("00191.23876 90000.000126 34567.899215 9 37690000013500", @boleto_novo.linha_digitavel(@boleto_novo.codigo_barras))
-    boleto_convenio6_numero17_carteira17
     assert_raise RuntimeError do
+      boleto_convenio6_numero17_carteira17
       raise 'Verifique as informações do boleto!!!'
     end
     boleto_convenio6_numero17_carteira18

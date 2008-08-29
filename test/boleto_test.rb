@@ -1,9 +1,9 @@
+$:.unshift File.join(File.dirname(__FILE__), "..", "lib")
+require 'boleto/boleto.rb'
 require 'test/unit'
 require 'rubygems'
 require 'rghost'
 require 'rghost_barcode'
-
-require File.dirname(__FILE__) + '/../lib/boleto/boleto.rb'
 
 class BoletoTest < Test::Unit::TestCase
 
