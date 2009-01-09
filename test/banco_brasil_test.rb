@@ -2,7 +2,7 @@ $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 require 'rubygems'
 require 'rghost'
 require 'rghost_barcode'
-require 'validatable'
+# require 'validatable'
 require 'core_ext_payment.rb'
 require 'boleto/boleto.rb'
 require 'boleto/bancobrasil.rb'

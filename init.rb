@@ -2,7 +2,7 @@
 require 'rubygems'
 require 'rghost'
 require 'rghost_barcode'
-require 'validatable'
+# require 'validatable'
 
 # requerendo plugin
 require 'core_ext_payment'

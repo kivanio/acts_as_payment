@@ -2,7 +2,7 @@ class Boleto
   # necessario para gerar codigo de barras
   include RGhost unless self.include?(RGhost)
   # necessario para validar os campos
-  include Validatable unless self.include?(Validatable)
+  # include Validatable unless self.include?(Validatable)
 
   attr_accessor :banco
   attr_accessor :convenio
@@ -43,23 +43,23 @@ class Boleto
   attr_accessor :sacado_linha2
   attr_accessor :sacado_linha3
   
-  validates_presence_of :banco, :message => "Banco não pode estar em branco."
-  validates_presence_of :agencia, :message => "Agência não pode estar em branco."
-  validates_presence_of :conta_corrente, :message => "Conta Corrente não pode estar em branco."
-  validates_presence_of :especie_documento, :message => "Espécie de Documento não pode estar em branco."
-  validates_presence_of :especie, :message => "Espécie não pode estar em branco."
-  validates_presence_of :moeda, :message => "Moeda não pode estar em branco."
-  validates_presence_of :data_processamento, :message => "Date de Processamento não pode estar em branco."
-  validates_presence_of :dias_vencimento, :message => "Dias para o Vencimento não pode estar em branco."
-  validates_presence_of :data_vencimento, :message => "Data de Vencimento não pode estar em branco."
-  validates_presence_of :aceite, :message => "Aceite não pode estar em branco."
-  validates_presence_of :quantidade, :message => "Quantidade não pode estar em branco."
-  validates_presence_of :valor_documento, :message => "Valor do Documento não pode estar em branco."
-  validates_presence_of :cedente, :message => "Cedente não pode estar em branco."
-  validates_presence_of :documento_cedente, :message => "Documento do Cedente não pode estar em branco."
-  validates_presence_of :nosso_numero, :message => "Nosso Número não pode estar em branco."
-  validates_presence_of :sacado, :message => "Sacado não pode estar em branco."
-  validates_presence_of :documento_sacado, :message => "Documento do Sacado não pode estar em branco."
+  # validates_presence_of :banco, :message => "Banco não pode estar em branco."
+  #  validates_presence_of :agencia, :message => "Agência não pode estar em branco."
+  #  validates_presence_of :conta_corrente, :message => "Conta Corrente não pode estar em branco."
+  #  validates_presence_of :especie_documento, :message => "Espécie de Documento não pode estar em branco."
+  #  validates_presence_of :especie, :message => "Espécie não pode estar em branco."
+  #  validates_presence_of :moeda, :message => "Moeda não pode estar em branco."
+  #  validates_presence_of :data_processamento, :message => "Date de Processamento não pode estar em branco."
+  #  validates_presence_of :dias_vencimento, :message => "Dias para o Vencimento não pode estar em branco."
+  #  validates_presence_of :data_vencimento, :message => "Data de Vencimento não pode estar em branco."
+  #  validates_presence_of :aceite, :message => "Aceite não pode estar em branco."
+  #  validates_presence_of :quantidade, :message => "Quantidade não pode estar em branco."
+  #  validates_presence_of :valor_documento, :message => "Valor do Documento não pode estar em branco."
+  #  validates_presence_of :cedente, :message => "Cedente não pode estar em branco."
+  #  validates_presence_of :documento_cedente, :message => "Documento do Cedente não pode estar em branco."
+  #  validates_presence_of :nosso_numero, :message => "Nosso Número não pode estar em branco."
+  #  validates_presence_of :sacado, :message => "Sacado não pode estar em branco."
+  #  validates_presence_of :documento_sacado, :message => "Documento do Sacado não pode estar em branco."
 
   def initialize
     self.especie_documento = "DM"

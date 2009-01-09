@@ -7,7 +7,6 @@
 * Ghostscript instalado e funcionando(Necessário para o rghost)
 * rghost >= 0.8.3
 * rghost_barcode >= 0.8
-* validatable
 
 ## INSTALAÇÃO:
 
@@ -18,15 +17,6 @@ Instalando plugin:
 Copiando arquivos:
 
     rake acts_as_payment:install
-
-Configurando Ghostscript no rghost:
-
-Edite o arquivo init.rb presente neste plugin para acrescentar novas plataformas.
-
-    MAC OS: RGhost::Config::GS[:path] = '/opt/local/bin/gs'
-    Windows: Alguém?
-    Linux: RGhost::Config::GS[:path] = '/usr/bin/gs'
-    FreeBSD: RGhost::Config::GS[:path] = '/usr/local/bin/gs'
 
 ## MÉTODOS DISPONÍVEIS:
 
@@ -66,11 +56,12 @@ Edite o arquivo init.rb presente neste plugin para acrescentar novas plataformas
   * [Nando Vieira][nv](modulo/class 'currency')
   * [Claudio Pozzebon][cp](layout html e criação do EPS do Banco do Brasil)
   * [Thiago Pradi][tp](Melhorias no init, tests e refactoring)
+  * [Otávio Sampaio][os](Códigos para o banco ITAU)
           
 
 ## Gostou?
 
-[Recomende-me no workingwithrails.com][ak]
+[Recomende-nos no workingwithrails.com][ak]
 
 Released under the MIT license
 
@@ -81,3 +72,4 @@ Released under the MIT license
 [nv]: http://simplesideias.com.br
 [cp]: http://www.kraudio.com.br
 [tp]: http://tchandy.wordpress.com
+[os]: http://blog.riopro.com.br

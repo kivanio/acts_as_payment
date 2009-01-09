@@ -1,7 +1,7 @@
 class BancoBrasil < Boleto
 
   attr_accessor :codigo_servico
-  validates_presence_of :codigo_servico
+  # validates_presence_of :codigo_servico
 
   def initialize
     super
