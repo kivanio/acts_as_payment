@@ -12,6 +12,7 @@ require 'currency'
 # novas classes devem ser colocadas aqui
 require 'boleto/boleto'
 require 'boleto/bancobrasil'
+require 'boleto/itau'
 require 'retorno/retorno_cbr643'
 
 # Verificação da Plataforma e setando as configurações do RGHOST

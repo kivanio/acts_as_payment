@@ -79,7 +79,7 @@ class BancoBrasil < Boleto
   # Gerar o boleto em pdf usando template padrão
   def boleto_pdf
     doc=Document.new :paper => :A4 # 210x297
-    doc.image "public/images/payment/boleto.eps"
+    doc.image "public/images/payment/boleto_bb.eps"
 
     doc.define_tags do
       tag :grande, :size => 12
