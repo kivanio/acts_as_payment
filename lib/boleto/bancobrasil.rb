@@ -10,7 +10,6 @@ class BancoBrasil < Boleto
     self.codigo_servico = false
   end
 
-  # Carteira 18
   def codigo_barras
     return nil unless self.valid?
     banco = self.zeros_esquerda(self.banco,3)

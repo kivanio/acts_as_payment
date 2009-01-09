@@ -7,6 +7,7 @@
 * Ghostscript instalado e funcionando(Necessário para o rghost)
 * rghost >= 0.8.3
 * rghost_barcode >= 0.8
+* validatable
 
 ## INSTALAÇÃO:
 
