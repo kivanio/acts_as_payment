@@ -11,7 +11,6 @@ class BancoBrasil < Boleto
   end
 
   def codigo_barras
-    return nil unless self.valid?
     banco = self.zeros_esquerda(self.banco,3)
     valor_documento = self.zeros_esquerda((self.valor_documento.limpa_valor_moeda),10)
     convenio = self.convenio.to_s
