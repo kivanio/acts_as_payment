@@ -2,7 +2,6 @@
 require 'rubygems'
 require 'rghost'
 require 'rghost_barcode'
-# require 'validatable'
 
 # requerendo plugin
 require 'core_ext_payment'
@@ -14,4 +13,3 @@ require 'boleto/boleto'
 require 'boleto/bancobrasil'
 require 'boleto/itau'
 require 'retorno/retorno_cbr643'
-

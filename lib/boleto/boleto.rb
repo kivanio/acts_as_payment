@@ -1,8 +1,6 @@
 class Boleto
   # necessario para gerar codigo de barras
   include RGhost unless self.include?(RGhost)
-  # necessario para validar os campos
-  # include Validatable unless self.include?(Validatable)
 
   attr_accessor :banco
   attr_accessor :convenio

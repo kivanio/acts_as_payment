@@ -66,7 +66,7 @@ class Itau < Boleto
     codigo_de_barras = self.codigo_barras
     
     doc=Document.new :paper => :A4 # 210x297
-    doc.image "public/images/payment/boleto_itau.eps"
+    doc.image File.join(File.dirname(__FILE__), '..','..','arquivos/eps_templates/boleto_itau.eps')
 
     doc.define_tags do
       tag :grande, :size => 12
