@@ -1,5 +1,5 @@
 namespace :acts_as_payment do
-  desc "Instala arquivos necessários"
+  desc "Instala arquivos necessários para boletos em HTML"
   task :install do
     plugin_dir = File.join(File.dirname(__FILE__), '..')
     #copiando arquivos para a public

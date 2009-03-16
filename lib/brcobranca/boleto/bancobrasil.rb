@@ -1,7 +1,6 @@
 class BancoBrasil < Boleto
-
+   
   attr_accessor :codigo_servico
-  # validates_presence_of :codigo_servico
 
   def initialize
     super
@@ -56,8 +55,6 @@ class BancoBrasil < Boleto
     else
       return nil
     end
-
-
   end
 
   # metodo para retorno de digito verificador de modulo 11 para linha digitavel do Banco do Brasil

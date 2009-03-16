@@ -1,5 +1,5 @@
 $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
-require 'core_ext_payment.rb'
+require 'brcobranca'
 require 'test/unit'
 require 'date'
 

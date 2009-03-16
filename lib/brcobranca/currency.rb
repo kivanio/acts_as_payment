@@ -1,6 +1,6 @@
 # Implementação feita por Nando Vieira do http://simplesideias.com.br
 # post http://simplesideias.com.br/usando-number_to_currency-em-modelos-no-rails
-
+module Brcobanca
 module Currency
   BRL = {:delimiter => ".", :separator => ",", :unit => "R$", :precision => 2, :position => "before"}
   USD = {:delimiter => ',', :separator => ".", :unit => "US$", :precision => 2, :position => "before"}
@@ -54,8 +54,9 @@ module Currency
     end
   end
 end
+end
 
-class Fixnum; include Currency::Number; end
-class Bignum; include Currency::Number; end
-class Float; include Currency::Number; end
-class String; include Currency::String; end
+class Fixnum; include Brcobanca::Currency::Number; end
+class Bignum; include Brcobanca::Currency::Number; end
+class Float; include Brcobanca::Currency::Number; end
+class String; include Brcobanca::Currency::String; end
