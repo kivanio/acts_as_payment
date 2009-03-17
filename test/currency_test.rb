@@ -1,5 +1,5 @@
 $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
-require 'currency.rb'
+require 'brcobranca'
 require 'test/unit'
 
 class CurrencyTest < Test::Unit::TestCase

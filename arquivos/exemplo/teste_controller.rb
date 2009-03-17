@@ -1,7 +1,8 @@
 class TesteController < ApplicationController
 
   # Copiado via rake para o diretório de layouts
-  layout "boleto_bb"
+  # Descomente a linha a baixo caso for utilizar saída em HTML
+  # layout "boleto_bb"
 
   def index
 

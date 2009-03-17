@@ -1,5 +1,5 @@
 class BancoBrasil < Boleto
-   
+
   attr_accessor :codigo_servico
 
   def initialize

@@ -1,9 +1,9 @@
 class Boleto
-  
-  if Brcobanca::Config::OPCOES[:saida_padrao] == 'pdf' && Brcobanca::Config::OPCOES[:gerador_pdf] == 'rghost'
-  # necessario para gerar codigo de barras
-   include RGhost unless self.include?(RGhost)
- end
+
+  # if Brcobanca::Config::OPCOES[:saida_padrao] == 'pdf' && Brcobanca::Config::OPCOES[:gerador_pdf] == 'rghost'
+  #   # necessario para gerar codigo de barras
+  #   include RGhost unless self.include?(RGhost)
+  # end
 
   attr_accessor :banco
   attr_accessor :convenio
@@ -43,7 +43,7 @@ class Boleto
   attr_accessor :sacado_linha1
   attr_accessor :sacado_linha2
   attr_accessor :sacado_linha3
-  
+
   def initialize
     self.especie_documento = "DM"
     self.especie = "R$"
@@ -58,7 +58,7 @@ class Boleto
     self.valor_documento = 0.0
     self.local_pagamento = "QUALQUER BANCO ATÉ O VENCIMENTO"
   end
-  
+
   # Monta a linha digitavel padrao para todos os bancos segundo a BACEN
   # Retorna + nil + para Codigo de Barras em branco, 
   # Codigo de Barras com tamanho diferente de 44 digitos e 
@@ -93,18 +93,18 @@ class Boleto
 
   # metodo padrao para calculo de modulo 10 segundo a BACEN
   def modulo10(valor_inicial="")
-      return nil if (valor_inicial !~ /\S/)
+    return nil if (valor_inicial !~ /\S/)
 
-      total = 0
-      multiplicador = 2
+    total = 0
+    multiplicador = 2
 
-      for caracter in valor_inicial.split(//).reverse!
-        total += self.soma_digitos(caracter.to_i * multiplicador)
-        multiplicador = multiplicador == 2 ? 1 : 2
-      end
+    for caracter in valor_inicial.split(//).reverse!
+      total += self.soma_digitos(caracter.to_i * multiplicador)
+      multiplicador = multiplicador == 2 ? 1 : 2
+    end
 
-      valor = (10 - (total % 10))
-      return valor == 10 ? 0 : valor
+    valor = (10 - (total % 10))
+    return valor == 10 ? 0 : valor
   end
 
   # metodo padrao para calculo de modulo 11 com multiplicaroes de 9 a 2 segundo a BACEN
@@ -176,7 +176,7 @@ class Boleto
     return valor_inicial if (diferenca <= 0)
     return (("0" * diferenca) + valor_inicial )
   end
-  
+
   def fator_vencimento
     return nil unless self.data_vencimento.kind_of?(Date)
     self.data_vencimento.fator_vencimento

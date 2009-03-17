@@ -1,10 +1,9 @@
 $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
-
-require 'retorno/retorno_cbr643'
+require 'brcobranca'
 require 'test/unit'
 
 class RetornoCbr643Test < Test::Unit::TestCase
-  
+
   def test_should_correct_return_retorno
     @pagamentos = RetornoCbr643.new(File.join(File.dirname(__FILE__), '..', 'arquivos', 'exemplo', 'CBR64310.RET'))    
     assert_equal("000002", @pagamentos.retorno.first[:sequencial])
@@ -16,14 +15,14 @@ class RetornoCbr643Test < Test::Unit::TestCase
     assert_equal("0000000108461", @pagamentos.retorno.first[:valor_recebido])
     assert_equal("11237250000047565", @pagamentos.retorno.first[:nosso_numero])
   end
-  
+
   def test_should_return_excpetion_on_initialize
     assert_raise ArgumentError do
       @pagamentos = RetornoCbr643.new
       raise 'Arquivo não encontrado'
     end
   end
-  
+
   def test_should_return_excpetion_file_not_found
     assert_raise RuntimeError do
       @pagamentos = RetornoCbr643.new("nao_existe.txt")

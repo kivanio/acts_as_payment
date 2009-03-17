@@ -217,12 +217,5 @@ class BancoBrasilTest < Test::Unit::TestCase
     boleto_nil
     assert_equal nil, @boleto_novo.linha_digitavel(@boleto_novo.codigo_barras)
   end
-  
-  # def test_should_boelto_valid
-  #   boleto_convenio7_numero10_um
-  #   assert_equal true, @boleto_novo.valid?
-  #   boleto_nil
-  #   assert_equal false, @boleto_novo.valid?
-  # end
 
 end

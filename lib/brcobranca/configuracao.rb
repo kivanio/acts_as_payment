@@ -9,6 +9,9 @@ module Brcobanca
     case Brcobanca::Config::OPCOES[:gerador_pdf]
     when 'rghost'
       require 'rghost'
+      class Boleto
+        include RGhost unless self.include?(RGhost)
+      end
     when 'prawn'
       # require 'prawn'
     else
@@ -22,6 +25,6 @@ module Brcobanca
       # require 'prawn'
     else
       require 'rghost_barcode'
-    end  
+    end
   end
 end
